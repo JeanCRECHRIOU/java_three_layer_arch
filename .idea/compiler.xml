@@ -7,9 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="apiweb" />
-        <module name="infra" />
-        <module name="application" />
-        <module name="domain" />
+        <module name="repository" />
+        <module name="entity" />
+        <module name="service" />
+        <module name="dto" />
       </profile>
     </annotationProcessing>
   </component>

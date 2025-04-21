@@ -1,11 +1,9 @@
 package com.jcrechriou.apiweb.controller;
 
-import com.jcrechriou.domain.entities.User;
-import com.jcrechriou.application.services.UserService;
-import com.jcrechriou.infra.entities.UserEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.jcrechriou.service.UserService;
+import com.jcrechriou.entity.User;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +18,24 @@ public class UserController {
     }
 
     @GetMapping
-    public List<UserEntity> getUsers() {
+    public List<User> getAllUsers() {
         return userService.getAllUsers();
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUser(@PathVariable Long id) {
+        return userService.getUserById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public User createUser(@RequestBody User user) {
+        return userService.createUser(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
     }
 }

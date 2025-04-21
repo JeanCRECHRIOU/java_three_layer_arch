@@ -8,11 +8,12 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 @SpringBootApplication(scanBasePackages = {
         "com.jcrechriou"
 })
-@EnableJpaRepositories(basePackages = "com.jcrechriou.infra.repositories")
-@EntityScan(basePackages = "com.jcrechriou.infra.entities")
+@EnableJpaRepositories(basePackages = "com.jcrechriou.repository")
+@EntityScan(basePackages = "com.jcrechriou.entity")
 
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+
 }

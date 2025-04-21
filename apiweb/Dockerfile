@@ -47,5 +47,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 
 # base de donnee
 # sudo docker run -d -p 5432:5432 --name postgres-container postgres
+
 #sudo docker compose up --build
+#sudo docker rm java-api (suppreesion d un container)
 
