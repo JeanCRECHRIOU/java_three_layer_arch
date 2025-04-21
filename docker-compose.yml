@@ -10,7 +10,8 @@ services:
       POSTGRES_USER: jcrechriou
       POSTGRES_PASSWORD: password
     ports:
-      - "5432:5432"
+      - "5432:5432" # Port pour la base
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
@@ -22,7 +23,8 @@ services:
       dockerfile: apiweb/Dockerfile
     container_name: java-api
     ports:
-      - "8081:8080" #Le conteneur écoutera toujours en interne sur 8080, mais il sera accessible depuis l’hôte via http://localhost:8081.
+      - "8080:8080"
+      - "5005:5005" # Port pour le débogage à distance
     depends_on:
       - postgres
     environment:

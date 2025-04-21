@@ -1,5 +1,6 @@
 package com.jcrechriou.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,6 +9,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     public Long id;
     public String name;
     public String email;
@@ -29,9 +31,12 @@ public class User {
         this.name = name;
     }
 
+    // ✅ Constructeur par défaut (obligatoire pour Jackson)
+    public User() {}
 
-    public User(Long id, String name) {
+    public User(Long id, String name, String email) {
         this.id = id;
         this.name = name;
+        this.email = email;
     }
 }
